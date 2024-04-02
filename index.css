@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.filter-tools {
+    text-align: center;
+}
+
+.filter-tools div {
+    display: inline-block;
+}
+
+#character-container {
+    text-align: center;
+    
+}

@@ -8,31 +8,40 @@
 </head>
 <body>
 <!-- Title -->
-    <h1>Rick and Morty</h1>
+    <header>
+        <h1>Rick and Morty</h1>
+    </header>
     <hr>
-<!-- form for submit -->
-    <div>
-        <h3>Search</h3>
-        <form>
-            <input
-                type="text"
-                name="name"
-                value=""
-                placeholder="Enter a character's name..."
-            />
-        </form>
-    </div>
-<!-- episode filter -->
-    <div>
-        <h3>Filter</h3>
-        <select>
-            <h3>Filter By Episode</h3>
-            <option></option>
-        </select>
-    </div>    
-<hr>
-<!-- character card section -->
+<!-- form and filter -->
+    <section class="filter-tools">
+        <!-- form for submit -->
+        <div>
+            <h3>Search</h3>
+            <form id="search-character">
+                <input
+                    type="text"
+                    name="name"
+                    value=""
+                    placeholder="Enter a character's name..."
+                />
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <!-- episode filter -->
+        <div id="filter-episode">
+            <h3>Filter</h3>
+            <select id="episode-dropdown">
+                <h3>Filter By Episode</h3>
+                <option></option>
+            </select>
+        </div>    
+    </section>
 
+    <hr>
+    <!-- character card section -->
+    <section id="character-container">
+
+    </section>
 <!-- connect js -->
     <script src="index.js"></script>
 </body>
