@@ -6,7 +6,7 @@ The goal of completing this project is to display my learning throughout Phase 1
 
 ## Description
 
-For my project, I chose to create an application that displays characters from the television show, Rick and Morty. Upon initially visiting the application, all included characters are displayed on the page with their name, species, and origin location. The application includes two features allowing the user to filter which characters are displayed on the page. These include searching a character by name, and filtering the characters by episode.
+For my project, I chose to create an application that displays characters from the television show, Rick and Morty. Upon initially visiting the application, all included characters are displayed on the page with their name, avatar, species, and origin location. The application includes two features allowing the user to filter which characters are displayed on the page. These include searching a character by name, and filtering the characters by episode.
 
 ## Features
 
