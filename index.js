@@ -27,7 +27,6 @@ function fetchAllEpisodes(){
     fetch("https://rickandmortyapi.com/api/episode")
     .then(res=>res.json())
     .then(episodeData=>{
-        console.log(episodeData.info.count + " number of episodes")
         let numEpisodes = episodeData.info.count
         const episodeDropdown = document.getElementById("episode-dropdown")
         for (let i=1; i<=numEpisodes; i++){
@@ -44,19 +43,20 @@ function searchCharacterName(e){
     e.preventDefault()
     document.getElementById("character-container").innerHTML = ""
     let characterName = e.target["name"].value.toLowerCase()
+    document.getElementById("episode-dropdown").selectedIndex = 0
     let numOfPages
     document.getElementById("search-character").reset()
-    console.log(characterName)
     fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(res=>res.json())
     .then(data => {
         numOfPages = data.info.pages
-        console.log(data.info.pages)
         for(let i=1; i<=numOfPages; i++){
             fetch(`https://rickandmortyapi.com/api/character/?page=${i}&name=${characterName}`)
             .then(res=>res.json())
             .then(characterData=>{
-                console.log(characterData)
+                characterData.results.forEach(character=>{
+                    renderCharacter(character)
+                })
             })
         }
     })
