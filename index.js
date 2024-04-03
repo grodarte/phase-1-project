@@ -10,7 +10,13 @@ function fetchCharacters(){
         console.log(characterData.info.pages + " pages of characters")
         console.log(characterData.results)
         characterData.results.forEach(character=> {
-            let card = document.createElement("div")
+            renderCharacter(character)
+        })
+    })
+}
+
+function renderCharacter(character){
+    let card = document.createElement("div")
             card.className = "card"
             card.id = character.id
             card.innerHTML = `
@@ -20,8 +26,6 @@ function fetchCharacters(){
             `
             console.log(card)
             document.getElementById("character-container").appendChild(card)
-        })
-    })
 }
 
 function fetchEpisodes(){
@@ -40,3 +44,4 @@ function fetchEpisodes(){
         }
     })
 }
+

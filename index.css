@@ -21,3 +21,8 @@ header {
     text-align: center;
     
 }
+
+.card {
+    display: inline-grid;
+    padding: 5px;
+}
