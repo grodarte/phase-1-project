@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchCharacters()
     fetchEpisodes()
+    document.getElementById("episode-dropdown").addEventListener("change", fetchCast)
 })
 
 function fetchCharacters(){
@@ -45,3 +46,23 @@ function fetchEpisodes(){
     })
 }
 
+function fetchCast(e){
+    document.getElementById("character-container").innerHTML = ""
+    let episode = e.target.value.split(" ")[1]
+    console.log(episode)
+    fetch (`https://rickandmortyapi.com/api/episode/${episode}`)
+    .then(res=>res.json())
+    .then(episodeData=>{
+        episodeData.characters.forEach(characterURL => {
+            fetchCharacterDetails(characterURL)
+        })
+    })
+}
+
+function fetchCharacterDetails(characterURL){
+    fetch(`${characterURL}`)
+    .then(res=>res.json())
+    .then(characterDetails => {
+        renderCharacter(characterDetails)
+    })
+}
