@@ -16,4 +16,4 @@ The search feature is designed so the user can search for a specific character n
 
 ### Filter Cast By Episode
 
-The filter feature is designed to allow the user to filter 
+The filter feature is designed to allow the user to filter the displayed characters by episode. The filter feature contains a dropdown which includes all exisiting episodes. When an episode is selected by the user, the corresponding cast of that episode is displayed on the page.
