@@ -6,7 +6,7 @@ The goal of completing this project is to display my learning throughout Phase 1
 
 ## Description
 
-For my project, I chose to create an application that displays Rick and Morty characters. Upon initially visiting the application, it displays all characters on the page. 
+For my project, I chose to create an application that displays Rick and Morty characters. Upon initially visiting the application, all characters are displayed on the page. There are a couple of features allowing the user to filter which characters are displayed. These include searching a character name, and filtering the characters by episode.
 
 ## Features
 
