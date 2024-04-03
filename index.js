@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("index.js is connected")
     fetchCharacters()
     fetchEpisodes()
 })
@@ -18,5 +17,14 @@ function fetchEpisodes(){
     .then(res=>res.json())
     .then(episodeData=>{
         console.log(episodeData.info.count + " number of episodes")
+        let numEpisodes = episodeData.info.count
+        const episodeDropdown = document.getElementById("episode-dropdown")
+        for (let i=1; i<=numEpisodes; i++){
+            let episode = document.createElement("option")
+            episode.innerHTML = `
+            episode <span>${i}</span>
+            `
+            episodeDropdown.appendChild(episode)
+        }
     })
 }
