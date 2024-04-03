@@ -49,15 +49,19 @@ function searchCharacterName(e){
     fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(res=>res.json())
     .then(data => {
-        numOfPages = data.info.pages
-        for(let i=1; i<=numOfPages; i++){
-            fetch(`https://rickandmortyapi.com/api/character/?page=${i}&name=${characterName}`)
-            .then(res=>res.json())
-            .then(characterData=>{
-                characterData.results.forEach(character=>{
-                    renderCharacter(character)
+        if(data.error){
+            document.getElementById("character-container").innerText = "No characters found."
+        } else {
+            numOfPages = data.info.pages
+            for(let i=1; i<=numOfPages; i++){
+                fetch(`https://rickandmortyapi.com/api/character/?page=${i}&name=${characterName}`)
+                .then(res=>res.json())
+                .then(characterData=>{
+                    characterData.results.forEach(character=>{
+                        renderCharacter(character)
+                    })
                 })
-            })
+            }
         }
     })
 }
