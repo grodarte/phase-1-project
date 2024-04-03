@@ -1,18 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetchCharacters()
+    fetchAllCharacters()
     fetchEpisodes()
     document.getElementById("episode-dropdown").addEventListener("change", fetchCast)
 })
 
-function fetchCharacters(){
-    fetch("https://rickandmortyapi.com/api/character")
+function fetchAllCharacters(){
+    let totalPages
+    fetch(`https://rickandmortyapi.com/api/character`)
     .then(res=>res.json())
-    .then(characterData=>{
-        console.log(characterData.info.pages + " pages of characters")
-        console.log(characterData.results)
-        characterData.results.forEach(character=> {
-            renderCharacter(character)
-        })
+    .then(data => {
+        totalPages = data.info.pages
+        for (let i=1; i<=totalPages; i++){
+            fetch(`https://rickandmortyapi.com/api/character/?page=${i}`)
+            .then(res=>res.json())
+            .then(characterData=>{
+                characterData.results.forEach(character=>{
+                    renderCharacter(character)
+                })
+            })
+        }
     })
 }
 
