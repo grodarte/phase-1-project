@@ -16,6 +16,7 @@ function fetchCharacters(){
             card.innerHTML = `
                 <img src=${character.image} class="character-avatar"/>
                 <h4>${character.name}</h4>
+                <p>${character.species} from ${character.origin.name}</p>
             `
             console.log(card)
             document.getElementById("character-container").appendChild(card)
