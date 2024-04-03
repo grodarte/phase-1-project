@@ -9,6 +9,17 @@ function fetchCharacters(){
     .then(characterData=>{
         console.log(characterData.info.pages + " pages of characters")
         console.log(characterData.results)
+        characterData.results.forEach(character=> {
+            let card = document.createElement("div")
+            card.className = "card"
+            card.id = character.id
+            card.innerHTML = `
+                <img src=${character.image} class="character-avatar"/>
+                <h4>${character.name}</h4>
+            `
+            console.log(card)
+            document.getElementById("character-container").appendChild(card)
+        })
     })
 }
 
