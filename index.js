@@ -23,18 +23,6 @@ function fetchAllCharacters(){
     })
 }
 
-function renderCharacter(character){
-    let card = document.createElement("div")
-            card.className = "card"
-            card.id = character.id
-            card.innerHTML = `
-                <img src=${character.image} class="character-avatar"/>
-                <h4>${character.name}</h4>
-                <p>${character.species} from ${character.origin.name}</p>
-            `
-            document.getElementById("character-container").appendChild(card)
-}
-
 function fetchAllEpisodes(){
     fetch("https://rickandmortyapi.com/api/episode")
     .then(res=>res.json())
@@ -54,12 +42,23 @@ function fetchAllEpisodes(){
 
 function searchCharacterName(e){
     e.preventDefault()
+    document.getElementById("character-container").innerHTML = ""
     let characterName = e.target["name"].value.toLowerCase()
+    let numOfPages
+    document.getElementById("search-character").reset()
     console.log(characterName)
     fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(res=>res.json())
     .then(data => {
+        numOfPages = data.info.pages
         console.log(data.info.pages)
+        for(let i=1; i<=numOfPages; i++){
+            fetch(`https://rickandmortyapi.com/api/character/?page=${i}&name=${characterName}`)
+            .then(res=>res.json())
+            .then(characterData=>{
+                console.log(characterData)
+            })
+        }
     })
 }
 
@@ -81,4 +80,16 @@ function fetchCharacterDetails(characterURL){
     .then(characterDetails => {
         renderCharacter(characterDetails)
     })
+}
+
+function renderCharacter(character){
+    let card = document.createElement("div")
+            card.className = "card"
+            card.id = character.id
+            card.innerHTML = `
+                <img src=${character.image} class="character-avatar"/>
+                <h4>${character.name}</h4>
+                <p>${character.species} from ${character.origin.name}</p>
+            `
+            document.getElementById("character-container").appendChild(card)
 }
