@@ -6,7 +6,7 @@ The goal of completing this project is to display my learning throughout Phase 1
 
 ## Description
 
-For my project, I chose to create an application that displays Rick and Morty characters. Upon initially visiting the application, all characters are displayed on the page. There are a couple of features allowing the user to filter which characters are displayed. These include searching a character name, and filtering the characters by episode.
+For my project, I chose to create an application that displays Rick and Morty characters. Upon initially visiting the application, all characters are displayed on the page. The application includes two features allowing the user to filter which characters are displayed on the page. These include searching a character by name, and filtering the characters by episode.
 
 ## Features
 
@@ -14,6 +14,6 @@ For my project, I chose to create an application that displays Rick and Morty ch
 
 The search feature is designed so the user can search for a specific character name and display all characters by that given name. For example, searching "Rick" will initiate a GET request which will return and display all known Rick characters.
 
-### Filter Cast By Episode
+### Filter Characters By Episode
 
-The filter feature is designed to allow the user to filter the displayed characters by episode. The filter feature contains a dropdown which includes all exisiting episodes. When an episode is selected by the user, the corresponding cast of that episode is displayed on the page.
+The filter feature is designed to allow the user to filter the displayed characters by episode. The filter feature contains a dropdown which includes all exisiting episodes. When an episode is selected by the user, the corresponding "cast" of that episode is displayed on the page.

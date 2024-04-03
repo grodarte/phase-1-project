@@ -25,4 +25,5 @@ header {
 .card {
     display: inline-grid;
     padding: 5px;
+    margin: 5px;
 }
