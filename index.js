@@ -6,11 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function fetchAllCharacters(){
-    let totalPages
     fetch(`https://rickandmortyapi.com/api/character`)
     .then(res=>res.json())
     .then(data => {
-        totalPages = data.info.pages
+        const totalPages = data.info.pages
         for (let i=1; i<=totalPages; i++){
             fetch(`https://rickandmortyapi.com/api/character/?page=${i}`)
             .then(res=>res.json())
@@ -27,10 +26,10 @@ function fetchAllEpisodes(){
     fetch("https://rickandmortyapi.com/api/episode")
     .then(res=>res.json())
     .then(episodeData=>{
-        let numEpisodes = episodeData.info.count
+        const numEpisodes = episodeData.info.count
         const episodeDropdown = document.getElementById("episode-dropdown")
         for (let i=1; i<=numEpisodes; i++){
-            let episode = document.createElement("option")
+            const episode = document.createElement("option")
             episode.innerHTML = `
             episode <span>${i}</span>
             `
@@ -89,7 +88,6 @@ function fetchCharacterDetails(characterURL){
 function renderCharacter(character){
     let card = document.createElement("div")
             card.className = "card"
-            card.id = character.id
             card.innerHTML = `
                 <img src=${character.image} class="character-avatar"/>
                 <h4>${character.name}</h4>
