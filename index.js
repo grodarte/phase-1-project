@@ -1,10 +1,12 @@
 const characterContainer = document.getElementById("character-container")
+const episodeDropdown = document.getElementById("episode-dropdown")
+const characterSearch = document.getElementById("search-character")
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchAllCharacters()
     fetchAllEpisodes()
-    document.getElementById("search-character").addEventListener("submit", searchCharacterName)
-    document.getElementById("episode-dropdown").addEventListener("change", filterCast)
+    characterSearch.addEventListener("submit", searchCharacterName)
+    episodeDropdown.addEventListener("change", filterCast)
 })
 
 function fetchAllCharacters(){
@@ -40,12 +42,10 @@ function fetchAllEpisodes(){
     .then(res=>res.json())
     .then(episodeData=>{
         const numEpisodes = episodeData.info.count
-        const episodeDropdown = document.getElementById("episode-dropdown")
+
         for (let i=1; i<=numEpisodes; i++){
             const episode = document.createElement("option")
-            episode.innerHTML = `
-            episode <span>${i}</span>
-            `
+            episode.innerText = `episode ${i}`
             episodeDropdown.appendChild(episode)
         }
     })
@@ -55,8 +55,8 @@ function searchCharacterName(e){
     e.preventDefault()
     characterContainer.innerHTML = ""
     const characterName = e.target["name"].value.toLowerCase()
-    document.getElementById("episode-dropdown").selectedIndex = 0
-    document.getElementById("search-character").reset()
+    episodeDropdown.selectedIndex = 0
+    characterSearch.reset()
 
     fetch(`https://rickandmortyapi.com/api/character/?name=${characterName}`)
     .then(res=>res.json())
@@ -80,7 +80,7 @@ function searchCharacterName(e){
 
 function filterCast(e){
     characterContainer.innerHTML = ""
-    let episode = e.target.value.split(" ")[1]
+    const episode = e.target.value.split(" ")[1]
     fetch (`https://rickandmortyapi.com/api/episode/${episode}`)
     .then(res=>res.json())
     .then(episodeData=>{
